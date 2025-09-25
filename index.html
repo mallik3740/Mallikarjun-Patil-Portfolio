@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mallikarjun Patil</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind custom config
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0B1020",
+            night: "#0F172A",
+            iris: "#6366F1",
+            mint: "#34D399",
+            blush: "#F472B6",
+            amber: "#F59E0B"
+          },
+          boxShadow: {
+            glow: "0 10px 30px rgba(99,102,241,0.25)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* Smooth scroll and focus outline */
+    html { scroll-behavior: smooth; }
+    .focus-ring:focus-visible { outline: 3px solid rgba(99,102,241,.7); outline-offset: 3px; border-radius: 10px; }
+    /* Subtle gradient grid background */
+    .bg-grid {
+      background:
+        radial-gradient(1000px 500px at 0% 0%, rgba(99,102,241,.08), transparent 60%),
+        radial-gradient(800px 400px at 100% 10%, rgba(52,211,153,.08), transparent 60%),
+        radial-gradient(600px 300px at 100% 100%, rgba(244,114,182,.08), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+      position: relative;
+      isolation: isolate;
+    }
+    .bg-grid::before {
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 36px 36px, 36px 36px;
+      mask-image: radial-gradient(900px 500px at 50% -10%, black, transparent 70%);
+    }
+    /* Tag pill accent border */
+    .tag { border: 1px solid rgba(255,255,255,.12); }
+    /* Avoid layout shift on filter */
+    .projects-grid { min-height: 320px; }
+    /* Simple modal animations */
+    .modal-show { animation: pop .18s ease-out; }
+    @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  </style>
+</head>
+<body class="min-h-screen bg-ink text-white selection:bg-iris/30 selection:text-white">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-ink/70 border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3 group focus-ring">
+        <span class="h-9 w-9 rounded-xl bg-gradient-to-br from-iris to-mint grid place-items-center shadow-glow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="text-white/90">
+            <path d="M4 12L12 4L20 12" stroke="currentColor" stroke-width="2" />
+            <path d="M6 10V20H10V14H14V20H18V10" stroke="currentColor" stroke-width="2" />
+          </svg>
+        </span>
+        <span class="font-semibold tracking-wide text-white/90 group-hover:text-white transition">Mallikarjun Patil</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-2">
+        <a href="#projects" class="px-3 py-2 rounded-lg text-white/80 hover:text-white hover:bg-white/5 focus-ring">Projects</a>
+        <a href="#about" class="px-3 py-2 rounded-lg text-white/80 hover:text-white hover:bg-white/5 focus-ring">About</a>
+        <a href="#skills" class="px-3 py-2 rounded-lg text-white/80 hover:text-white hover:bg-white/5 focus-ring">Skills</a>
+        <a href="#contact" class="px-3 py-2 rounded-lg text-white/80 hover:text-white hover:bg-white/5 focus-ring">Contact</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" class="px-3 py-2 rounded-lg hover:bg-white/5 text-white/80 hover:text-white focus-ring" aria-label="Toggle theme">
+          <span class="inline md:hidden">Theme</span>
+          <svg class="hidden md:block" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+        <button id="downloadResume" class="bg-iris hover:bg-iris/90 active:scale-[.98] transition px-4 py-2 rounded-lg font-medium shadow-glow focus-ring">
+          Download Resume
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="bg-grid">
+    <div class="max-w-6xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 text-sm text-white/70 bg-white/5 border border-white/10 rounded-full px-3 py-1 mb-5">
+          <span class="h-2 w-2 rounded-full bg-mint"></span> Available for freelance projects
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+          Designer & FullStack Developer crafting clean, joyful experiences
+        </h1>
+        <p class="mt-4 text-white/70 max-w-prose">
+          I turn ideas into beautiful, functional interfaces. I care about details, performance, and accessible, human-centered design.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#projects" class="bg-mint text-ink px-5 py-3 rounded-xl font-semibold hover:brightness-110 active:scale-[.98] focus-ring">View Projects</a>
+          <a href="#contact" class="px-5 py-3 rounded-xl font-semibold border border-white/15 hover:bg-white/5 focus-ring">Get in touch</a>
+        </div>
+        <div class="mt-8 flex items-center gap-4 text-white/70">
+          <a href="https://www.linkedin.com/in/mallikarjunpatil37/" target="_blank" rel="noopener noreferrer" class="hover:text-white focus-ring rounded-lg px-2 py-1">LinkedIn</a>
+          <a href="https://github.com/mallik3740/" target="_blank" rel="noopener noreferrer" class="hover:text-white focus-ring rounded-lg px-2 py-1">GitHub</a>
+        </div>
+      </div>
+        <div class="relative">
+          <div class="aspect-square rounded-3xl bg-gradient-to-br from-iris/25 via-blush/25 to-mint/25 p-1">
+          <div class="rounded-[10px] bg-night/70 grid place-items-center aspect-video">
+            <img src="images/myphoto.jpg" 
+            class="rounded-[10px] w-full h-full object-cover object-center" alt="Project Thumbnail">
+          </div>    
+          </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+    <div class="flex items-end justify-between flex-wrap gap-4">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold">Selected Projects</h2>
+        <p class="text-white/70 mt-2">A few highlights. Filter by type below.</p>
+      </div>
+      <div class="flex gap-2">
+        <button class="filter-btn bg-white/10 hover:bg-white/15 px-4 py-2 rounded-lg focus-ring" data-filter="all">All</button>
+        <button class="filter-btn bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg focus-ring" data-filter="web">Web</button>
+        <button class="filter-btn bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg focus-ring" data-filter="ui">UI</button>
+        <button class="filter-btn bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg focus-ring" data-filter="app">App</button>
+      </div>
+    </div>
+
+    <div id="projectsGrid" class="projects-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <!-- Project Card -->
+        <article class="project-card group rounded-2xl overflow-hidden border border-white/10 bg-white/[.03] hover:bg-white/[.05] transition" data-category="web">
+          <div class="p-5 flex flex-col gap-4">
+            <div class="rounded-xl bg-gradient-to-br from-iris/30 to-mint/30 p-[2px]">
+              <div class="rounded-[10px] bg-night/70 grid place-items-center aspect-video">
+                <!-- Replace SVG with image -->
+                <img src="data:image/jpeg;base64,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" alt="Blockchain Based E Voting System" class="w-full h-full object-cover rounded-[10px]" />
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-1 text-xs rounded-full tag">Web</span>
+              <span class="px-2 py-1 text-xs rounded-full tag">FullStack</span>
+            </div>
+            <h3 class="text-xl font-semibold">Blockchain Based E Voting System</h3>
+            <p class="text-white/70">Built a decentralized voting platform with secure voter/admin portals, authentication and responsive UI.</p>
+            <div class="flex items-center gap-3 mt-2">
+              <button class="view-btn px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 focus-ring" data-id="p1">View details</button>
+              <a href="https://github.com/mallik3740/Blockchain-Based-E-Voting-System" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg border border-white/15 hover:bg-white/5 focus-ring">Open</a>
+            </div>
+          </div>
+        </article>
+
+
+      <article class="project-card group rounded-2xl overflow-hidden border border-white/10 bg-white/[.03] hover:bg-white/[.05] transition" data-category="ui">
+        <div class="p-5 flex flex-col gap-4">
+          <div class="rounded-xl bg-gradient-to-br from-blush/30 to-amber/30 p-[2px]">
+            <div class="rounded-[10px] bg-night/70 grid place-items-center aspect-video">
+              <img src="https://lh3.googleusercontent.com/eS1Wm6l05g415fvEQyC1RbjUP2eRQz2tMm5hB3fAaIKuCSQL5xYs_kvTc19VX6x3qLY7_qZJkA0sWN3nDWyG-_yjqKc=s1280-w1280-h800" class="rounded-[10px] w-full h-full object-cover" alt="Project Thumbnail">
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-1 text-xs rounded-full tag">UI</span>
+            <span class="px-2 py-1 text-xs rounded-full tag">Frontend</span>
+          </div>
+          <h3 class="text-xl font-semibold">OpenAI Article Summarizer</h3>
+          <p class="text-white/70">Developed a web application using React, Redux Toolkit, and Tailwind CSS to summarize articles and save users’ time by 60%.</p>
+          <div class="flex items-center gap-3 mt-2">
+            <button class="view-btn px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 focus-ring" data-id="p2">View details</button>
+            <a href="https://github.com/mallik3740/OPEN-AI-ARTICLE-SUMMARISER" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg border border-white/15 hover:bg-white/5 focus-ring">Open</a>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="project-card group rounded-2xl overflow-hidden border border-white/10 bg-white/[.03] hover:bg-white/[.05] transition" data-category="app">
+        <div class="p-5 flex flex-col gap-4">
+          <div class="rounded-xl bg-gradient-to-br from-mint/30 to-iris/30 p-[2px]">
+            <div class="rounded-[10px] bg-night/70 grid place-items-center aspect-video">
+              <svg viewBox="0 0 300 180" class="w-full h-full">
+                <rect width="300" height="180" rx="10" fill="rgba(255,255,255,0.04)"/>
+                <rect x="100" y="40" width="100" height="100" rx="20" fill="#34D399"/>
+                <circle cx="150" cy="90" r="18" fill="#0F172A"/>
+              </svg>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-1 text-xs rounded-full tag">App</span>
+            <span class="px-2 py-1 text-xs rounded-full tag">Prototype</span>
+          </div>
+          <h3 class="text-xl font-semibold">Pulse Habit Tracker</h3>
+          <p class="text-white/70">A simple mobile concept that makes progress visual and rewarding.</p>
+          <div class="flex items-center gap-3 mt-2">
+            <button class="view-btn px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 focus-ring" data-id="p3">View details</button>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg border border-white/15 hover:bg-white/5 focus-ring">Open</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- About -->
+<section id="about" class="relative border-y border-white/10 overflow-hidden">
+  <!-- Background images -->
+  <div id="bg-rotator" class="absolute inset-0 -z-10 bg-cover bg-center transition-all duration-1000"></div>
+  <div class="absolute inset-0 bg-black/60 -z-10"></div> <!-- Dark overlay -->
+  <div class="max-w-6xl mx-auto px-6 py-16 md:py-20 grid md:grid-cols-2 gap-12 items-center relative z-10">
+    <div>
+      <h2 class="text-3xl md:text-4xl font-bold">About Me</h2>
+      <p class="text-white/70 mt-4">
+        I’m a multidisciplinary creative who loves bridging design and development. Over the years I’ve worked with startups and teams to ship polished products that people enjoy using.
+      </p>
+      <p class="text-white/70 mt-3">
+        When I’m not designing or coding, you’ll find me sketching interface ideas, testing micro-interactions, or brewing a perfect coffee.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <span class="tag px-3 py-1 rounded-full text-sm">Accessibility-first</span>
+        <span class="tag px-3 py-1 rounded-full text-sm">Performance</span>
+        <span class="tag px-3 py-1 rounded-full text-sm">Animation</span>
+        <span class="tag px-3 py-1 rounded-full text-sm">Systems thinking</span>
+      </div>
+    </div>
+
+    <!-- Right side content -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="rounded-2xl bg-white/[.04] border border-white/10 p-5">
+        <h3 class="font-semibold">What I do</h3>
+        <ul class="mt-3 space-y-2 text-white/70">
+          <li>• Frontend development</li>
+          <li>• Backend development</li>
+          <li>• FullStack Development</li>
+          <li>• Software Development</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-white/[.04] border border-white/10 p-5">
+        <h3 class="font-semibold">Technologies I Know</h3>
+        <ul class="mt-3 space-y-2 text-white/70">
+          <li>• HTML5</li>
+          <li>• CSS3</li>
+          <li>• JavaScript</li>
+          <li>• Python</li>
+          <li>• Django</li>
+          <li>• MySql</li>
+          <li>• Git</li>
+          <li>• GitHub</li>
+          <li>• FastApi</li>
+          <li>• Tailwind</li>
+          <li>• React (UI)</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-white/[.04] border border-white/10 p-5 col-span-2">
+        <h3 class="font-semibold">Values</h3>
+        <p class="mt-2 text-white/70">Clarity, kindness, and craftsmanship. I believe great products feel effortless.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Skills -->
+  <section id="skills" class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+    <h2 class="text-3xl md:text-4xl font-bold">Skills</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
+      <div class="rounded-2xl bg-white/[.04] border border-white/10 p-5">
+        <div class="flex items-center gap-3">
+          <span class="h-9 w-9 rounded-lg grid place-items-center bg-iris/30 text-white">💡</span>
+          <h3 class="font-semibold">Frontend</h3>
+        </div>
+        <ul class="mt-3 space-y-1 text-white/70">
+          <li>HTML, CSS, JS</li>
+          <li>Animations</li>
+          <li>Performance</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-white/[.04] border border-white/10 p-5">
+        <div class="flex items-center gap-3">
+          <span class="h-9 w-9 rounded-lg grid place-items-center bg-mint/30 text-white">⚙️</span>
+          <h3 class="font-semibold">Backend</h3>
+        </div>
+        <ul class="mt-3 space-y-1 text-white/70">
+          <li>Python</li>
+          <li>Django</li>
+          <li>MySql</li>
+          <li>APIs</li>
+          <li>Environment Development</li>
+        </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-night/40 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+      <h2 class="text-3xl md:text-4xl font-bold">Contact</h2>
+      <p class="text-white/70 mt-2">Have a project in mind? Let’s talk.</p>
+      <form id="contactForm" class="mt-8 grid md:grid-cols-2 gap-4" autocomplete="off">
+        <div class="md:col-span-1">
+          <label for="name" class="block text-sm text-white/70 mb-2">Name</label>
+          <input id="name" name="name" required placeholder="Your name" class="w-full rounded-xl bg-white/[.06] border border-white/10 px-4 py-3 focus-ring" />
+        </div>
+        <div class="md:col-span-1">
+          <label for="email" class="block text-sm text-white/70 mb-2">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com" class="w-full rounded-xl bg-white/[.06] border border-white/10 px-4 py-3 focus-ring" />
+        </div>
+        <div class="md:col-span-2">
+          <label for="message" class="block text-sm text-white/70 mb-2">Message</label>
+          <textarea id="message" name="message" required placeholder="Tell me a bit about your project..." rows="5" class="w-full rounded-xl bg-white/[.06] border border-white/10 px-4 py-3 focus-ring"></textarea>
+        </div>
+        <div class="md:col-span-2 flex items-center justify-between gap-3">
+          <button type="submit" class="bg-iris hover:bg-iris/90 px-6 py-3 rounded-xl font-semibold shadow-glow active:scale-[.98] focus-ring">Send message</button>
+        </div>
+        <P>It's just sample don't send through this check below is my original mail</P>
+      </form>
+      <div id="formToast" class="hidden mt-4 rounded-xl border border-white/10 bg-white/[.06] px-4 py-3 text-sm"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-white/60 text-sm">© <span id="year"></span> Your Name. All rights reserved. &nbsp;+91 9535531011 </p>
+      <div class="flex items-center gap-3 text-white/70">
+        <a  href="mailto:mallikarjunagowda450@gmail.com">Send email to mallikarjunagowda450@gmail.com</a>  
+        <a href="#home" class="px-3 py-2 rounded-lg hover:bg-white/5 focus-ring">Back to top ↑</a>
+    
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center p-6">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative w-full max-w-2xl rounded-2xl bg-night border border-white/10 p-6 modal-show">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h3 id="modalTitle" class="text-2xl font-bold">Project Title</h3>
+          <p id="modalSubtitle" class="text-white/70 mt-1">Short description</p>
+        </div>
+        <button id="modalClose" class="px-3 py-2 rounded-lg hover:bg-white/5 focus-ring">Close</button>
+      </div>
+      <div class="mt-5 rounded-xl bg-white/[.04] border border-white/10 overflow-hidden">
+        <div class="aspect-video grid place-items-center">
+          <svg viewBox="0 0 300 180" class="w-full h-full">
+            <rect width="300" height="180" rx="10" fill="rgba(255,255,255,0.04)"/>
+            <rect x="30" y="30" width="240" height="120" rx="10" fill="#6366F1"/>
+          </svg>
+        </div>
+      </div>
+      <p id="modalBody" class="text-white/80 mt-4">Detailed overview, key challenges, and outcomes.</p>
+      <div class="mt-4 flex gap-3">
+        <a id="modalLink" href="https://example.com" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 focus-ring">Open link</a>
+      </div>
+    </div>
+  </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Simple theme toggle
+    const themeToggle = document.getElementById("themeToggle");
+    let alt = false;
+    themeToggle.addEventListener("click", () => {
+      alt = !alt;
+      document.documentElement.style.setProperty("color-scheme", alt ? "light" : "dark");
+      document.body.classList.toggle("invert", alt);
+      themeToggle.textContent = alt ? "Theme: Light" : "Theme";
+      setTimeout(() => themeToggle.textContent = "Theme", 1200);
+    });
+
+    // Resume download as PDF
+    document.getElementById("downloadResume").addEventListener("click", () => {
+      const content = `MALLIKARJUN S PATIL
+-------------------------------------------------
+mallikarjunagowda450@gmail.com | 9535531011 | https://github.com/mallik3740 | 
+https://linkedin.com/in/mallikarjunpatil37/
+
+PROFESSIONAL SUMMARY
+Full Stack Developer with hands-on experience in building scalable, secure, and user-friendly web applications.
+Skilled in React.js, Node.js, FastAPI, and MySQL with expertise in RESTful API integration, debugging, testing,
+and deployment. Strong foundation in Data Structures, OOP, and Agile methodologies. Known for problem
+solving, collaboration, adaptability, and delivering efficient solutions in fast-paced environments.
+
+TECHNICAL SKILLS
+Programming Languages: Python, JavaScript, HTML5, CSS3
+Frameworks & Libraries: React.js, Redux Toolkit, Node.js, FastAPI, Express.js, Django
+Databases: MySQL
+Cloud & DevOps: AWS (EC2, S3, Lambda), Jenkins, GitHub Actions
+Tools: Git, GitHub, VS Code, PyCharm, REST APIs
+Concepts: OOP, DSA, Web Development, Agile/Scrum
+
+EDUCATION
+Bachelor of Engineering (B.E.) in Computer Science — Global Academy of Technology, Bangalore
+Feb 2022 – Jul 2025 | CGPA: 8.2 | Graduated Jul 2025
+Diploma in Mechanical Engineering — R. N. Shetty Polytechnic, Sirsi
+Jun 2019 – Aug 2022 | CGPA: 7.2
+
+PROFESSIONAL EXPERIENCE
+Web Development Intern | Unified Mentor — Oct 2024 – Nov 2024
+• Engineered and optimized full-stack features using HTML, CSS, JavaScript, Python (FastAPI), and MySQL.
+• Enhanced application performance by 20% through debugging and optimization.
+• Collaborated in Agile sprints, contributing to feature releases, code reviews, and daily stand-ups.
+
+PROJECTS
+Blockchain Based E-Voting System
+• Built a decentralized voting platform with secure voter/admin portals, authentication and responsive UI.
+• Implemented smart contracts (Ethereum, Truffle, Web3.js) for vote casting, result computation, and immutable records.
+• Developed a robust backend with Express.js, FastAPI, and MySQL to handle metadata and system logic.
+• Conducted unit, integration, and system testing to enhance reliability, prevent tampering, and ensure transparency.
+• Tech Stack: React.js, Node.js, Express.js, FastAPI, MySQL, Web3.js, MetaMask, Ganache.
+
+Open-AI-Article-Summarizer
+• Developed a web application using React, Redux Toolkit, and Tailwind CSS to summarize articles and save users’ time by 60%.
+• Integrated an AI-powered API for automated extraction of key insights from lengthy articles.
+• Implemented scalable state management with Redux Toolkit and optimized builds with Vite.
+• Designed a modern, responsive UI with Tailwind CSS, ensuring seamless cross-device experience.
+
+CERTIFICATIONS & ACHIEVEMENTS
+• Full Stack Web Development Certification (React.js, Node.js, Express.js, Deployment) — Udemy
+• Participated in Dare-2-Win, a competitive technical event focused on rapid problem-solving and teamwork.`;
+
+      // Use jsPDF to create PDF
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF();
+
+      // Add content to the PDF
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(11);
+      const lines = pdf.splitTextToSize(content, 180);
+      pdf.text(lines, 10, 10);
+
+      // Save PDF
+      pdf.save("Mallikarjun_S_Patil_Resume.pdf");
+    });
+</script>
+<script>
+document.getElementById("downloadResume").addEventListener("click", () => {
+  const content = `MALLIKARJUN S PATIL
+-------------------------------------------------
+mallikarjunagowda450@gmail.com | 9535531011 | https://github.com/mallik3740 | 
+https://linkedin.com/in/mallikarjunpatil37/
+
+PROFESSIONAL SUMMARY
+Full Stack Developer with hands-on experience in building scalable, secure, and user-friendly web applications.
+Skilled in React.js, Node.js, FastAPI, and MySQL with expertise in RESTful API integration, debugging, testing,
+and deployment. Strong foundation in Data Structures, OOP, and Agile methodologies. Known for problem
+solving, collaboration, adaptability, and delivering efficient solutions in fast-paced environments.
+
+TECHNICAL SKILLS
+Programming Languages: Python, JavaScript, HTML5, CSS3
+Frameworks & Libraries: React.js, Redux Toolkit, Node.js, FastAPI, Express.js, Django
+Databases: MySQL
+Cloud & DevOps: AWS (EC2, S3, Lambda), Jenkins, GitHub Actions
+Tools: Git, GitHub, VS Code, PyCharm, REST APIs
+Concepts: OOP, DSA, Web Development, Agile/Scrum
+
+EDUCATION
+Bachelor of Engineering (B.E.) in Computer Science — Global Academy of Technology, Bangalore
+Feb 2022 – Jul 2025 | CGPA: 8.2 | Graduated Jul 2025
+Diploma in Mechanical Engineering — R. N. Shetty Polytechnic, Sirsi
+Jun 2019 – Aug 2022 | CGPA: 7.2
+
+PROFESSIONAL EXPERIENCE
+Web Development Intern | Unified Mentor — Oct 2024 – Nov 2024
+• Engineered and optimized full-stack features using HTML, CSS, JavaScript, Python (FastAPI), and MySQL.
+• Enhanced application performance by 20% through debugging and optimization.
+• Collaborated in Agile sprints, contributing to feature releases, code reviews, and daily stand-ups.
+
+PROJECTS
+Blockchain Based E-Voting System
+• Built a decentralized voting platform with secure voter/admin portals, authentication and responsive UI.
+• Implemented smart contracts (Ethereum, Truffle, Web3.js) for vote casting, result computation, and immutable records.
+• Developed a robust backend with Express.js, FastAPI, and MySQL to handle metadata and system logic.
+• Conducted unit, integration, and system testing to enhance reliability, prevent tampering, and ensure transparency.
+• Tech Stack: React.js, Node.js, Express.js, FastAPI, MySQL, Web3.js, MetaMask, Ganache.
+
+Open-AI-Article-Summarizer
+• Developed a web application using React, Redux Toolkit, and Tailwind CSS to summarize articles and save users’ time by 60%.
+• Integrated an AI-powered API for automated extraction of key insights from lengthy articles.
+• Implemented scalable state management with Redux Toolkit and optimized builds with Vite.
+• Designed a modern, responsive UI with Tailwind CSS, ensuring seamless cross-device experience.
+
+CERTIFICATIONS & ACHIEVEMENTS
+• Full Stack Web Development Certification (React.js, Node.js, Express.js, Deployment) — Udemy
+• Participated in Dare-2-Win, a competitive technical event focused on rapid problem-solving and teamwork.`;
+
+      // Use jsPDF to create PDF
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF();
+
+      // Add content to the PDF
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(11);
+      const lines = pdf.splitTextToSize(content, 180);
+      pdf.text(lines, 10, 10);
+
+      // Save PDF
+      pdf.save("Mallikarjun_S_Patil_Resume.pdf");
+    });
+</script>
+</body>
+</html>
